@@ -25,5 +25,24 @@ export const cryptoController = {
             console.error(error)
             res.sendStatus(500)
         }
-    }
+    },
+
+    updateStock: (req: any, res: any) => {
+        try {
+            console.log(req.body.crypto)
+          const crypto = req.body.crypto;
+
+    
+          cryptoService.updateStock(crypto).then((result) => {
+
+    
+            res.json(result);
+          });
+        } catch (exception) {
+
+    
+          console.log(exception);
+          res.sendStatus(500);
+        }
+      },
 }

@@ -5,6 +5,7 @@ const router = express.Router()
 
 router.post('/add', userController.addUser)
 router.get('/get/:email/:password', userController.getUserByEmailAndPassword)
+router.get('/get/:id', userController.getUserById)
 router.put("/updateBalance/", userController.updateUserBalance); 
 
 export default router

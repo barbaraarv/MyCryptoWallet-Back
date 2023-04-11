@@ -34,6 +34,19 @@ export class UserService{
         return userPromise
     }
 
+    async getUserById(id:string) : Promise<UserDto/*  | undefined */>{
+        const userPromise = await this._userRepository.getUserById(id).then(userAsPojo =>{
+            if(!!userAsPojo)
+                return userAsPojo as UserDto
+            else
+                return undefined
+        }).catch(error=> {
+            console.error(error)
+            throw error
+        })
+        return userPromise
+    }
+
     async updateUserBalance(user: UserDto): Promise<UserDto> {
         console.log("En el service(DTO): " + user);
         const userPojo: UserPojo = user as UserPojo;

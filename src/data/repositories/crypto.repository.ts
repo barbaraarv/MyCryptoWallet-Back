@@ -32,5 +32,26 @@ export class CryptoRepository{
             return undefined
         }
     }
-
+    
+    async updateStock(newCrypto: CryptoPojo): Promise<CryptoPojo> {
+        try {
+          await this._cryptoRepository.update(
+            {
+                crypto_stock: newCrypto.crypto_stock,
+            },
+            {
+              where: {
+                crypto_id: newCrypto.crypto_id,
+              }
+            }
+          )
+          console.log("updateStock desde repository: " + newCrypto);
+    
+          return newCrypto;
+        } catch (error) {
+          console.error("Error updateStock desde repository");
+          console.error(error);
+          return null;
+        }
+      }
 }

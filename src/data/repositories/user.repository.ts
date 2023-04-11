@@ -40,6 +40,20 @@ export class UserRepository{
         }
     }
 
+    async getUserById(id:string): Promise<UserPojo>{
+        try{
+           return await this._userRepository.findOne({
+                where: { 
+                user_id: id,
+                }
+            })
+        }
+        catch(error){
+            console.error(error)
+            return undefined
+        }
+    }
+
     async updateUserBalance(newUser: UserPojo): Promise<UserPojo> {
         try {
           await this._userRepository.update(

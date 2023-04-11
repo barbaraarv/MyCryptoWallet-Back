@@ -11,7 +11,6 @@ export class UserDto{
 export type NewUserDto = Omit<UserDto, 'user_id'>
 
 
-
 export class CryptoDto{
     crypto_id: string
     crypto_name: string
@@ -19,7 +18,7 @@ export class CryptoDto{
     crypto_stock: number
 }
 
-export class WalletDto{
+export class UserCryptoDto{
     w_user_id: string
     w_crypto_id: string
     w_crypto_amount: number

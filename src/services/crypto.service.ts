@@ -1,5 +1,6 @@
 import { CryptoDto } from "../types";
 import { CryptoRepository } from '../data/repositories/crypto.repository';
+import { CryptoPojo } from "../data/models/crypto.model";
 
 export class CryptoService{
     _cryptoRepository: CryptoRepository
@@ -22,7 +23,7 @@ export class CryptoService{
         })
         return cryptoPromise
     }
-    async getCryptoById(id:number) : Promise<CryptoDto | undefined>{
+    async getCryptoById(id:number) : Promise<CryptoDto/*  | undefined */>{
         const cryptoPromise = await this._cryptoRepository.getCryptoById(id).then(cryptoAsPojo =>{
             if(!!cryptoAsPojo)
                 return cryptoAsPojo as CryptoDto
@@ -34,6 +35,29 @@ export class CryptoService{
         })
         return cryptoPromise
     }
+    
+
+    async updateStock(crypto: CryptoDto): Promise<CryptoDto> {
+        console.log("En el service(DTO): " + crypto);
+        const cryptoPojo: CryptoPojo = crypto as CryptoPojo;
+        console.log("En el service(POJO): " + cryptoPojo);
+        const cryptoPromise = await this._cryptoRepository
+          .updateStock(cryptoPojo)
+          .then((crypto) => {
+            console.log("updateStock desde service");
+    
+            return crypto;
+          })
+          .catch((error) => {
+            console.log("Error updateStock desde service");
+    
+            console.error(error);
+            throw error;
+          });
+    
+        return cryptoPromise;
+      }
+
 
     
 

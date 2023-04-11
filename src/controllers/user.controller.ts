@@ -29,6 +29,19 @@ export const userController = {
         }
     },
 
+    getUserById: (req: any, res: any)=>{
+        try {
+            const id = req.params.id
+            userService.getUserById(id).then(result => {
+                (result!=null) ? res.json(result): res.sendStatus(404)
+            })
+            
+        } catch (error) {
+            console.error(error)
+            res.sendStatus(500)
+        }
+    },
+
     updateUserBalance: (req: any, res: any) => {
         try {
           const newUser = req.body.user;
