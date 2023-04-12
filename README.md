@@ -2,6 +2,7 @@ Endpoints:
 
 Add user: '/api/user/add'
   Atributos entrada:
+  
     user_name: string
     user_lastname: string
     user_password: string
@@ -10,6 +11,7 @@ Add user: '/api/user/add'
     user_birthdate: Date
     
   Atributos salida:
+  
     user_id: string
     user_name: string
     user_lastname: string
@@ -23,6 +25,7 @@ Get all users: '/api/user/all'
  Atributos entrada:
     
   Atributos salida:
+  
   [
     user_id: string
     user_name: string
