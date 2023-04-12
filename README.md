@@ -36,6 +36,7 @@ Get all users: '/api/user/all'
 Get user by email and password: '/api/user/get/:email/:password'
 
  Atributos entrada:
+ 
     user_email: string
     user_password: string
     
