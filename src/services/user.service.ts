@@ -20,6 +20,21 @@ export class UserService{
         return userPromise
     }
 
+    async getAllUsers() : Promise<UserDto[]>{
+        const userPromise = await this._userRepository.getAllUsers().then(usersAsPojo =>{
+            let usersAsDto: UserDto[]=[]
+            usersAsPojo.forEach(userAsPojo =>{
+                let userAsDto = userAsPojo as UserDto
+                usersAsDto.push(userAsDto)
+            })
+            return usersAsDto
+        }).catch(error =>{
+            console.error(error);
+            throw error
+        })
+        return userPromise
+    }
+
 
     async getUserByEmailAndPassword(username:string, password: string) : Promise<UserDto/*  | undefined */>{
         const userPromise = await this._userRepository.getUserByEmailAndPassword(username, password).then(userAsPojo =>{

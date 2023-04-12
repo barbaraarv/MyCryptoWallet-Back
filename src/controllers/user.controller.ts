@@ -13,6 +13,17 @@ export const userController = {
             res.sendStatus(500)
         }
     },
+    
+    getAllUsers : (_req: any, res: any)=>{
+        try {
+            userService.getAllUsers().then(result => {
+                res.json(result)
+            })
+        } catch (error){
+            console.error(error)
+            res.sendStatus(500)
+        }
+    },
 
 
     getUserByEmailAndPassword: (req: any, res: any)=>{
