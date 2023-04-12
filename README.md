@@ -34,7 +34,7 @@ Get all users: '/api/user/all'
     user_email: string
     user_balance: number
     user_birthdate: Date
-   ]
+  ]
    
 Get user by email and password: '/api/user/get/:email/:password'
 
